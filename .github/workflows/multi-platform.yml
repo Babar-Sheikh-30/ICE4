@@ -1,0 +1,53 @@
+name: Multi-Platform Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ubuntu-job:
+    name: Ubuntu Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Print OS info
+        run: |
+          echo "Operating System: $RUNNER_OS"
+          uname -a
+      - name: Create and show file
+        run: |
+          echo "Hello from Ubuntu" > os-info.txt
+          cat os-info.txt
+
+  windows-job:
+    name: Windows Job
+    runs-on: windows-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Print OS info
+        run: |
+          echo "Operating System: $env:RUNNER_OS"
+          systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+      - name: Create and show file
+        shell: pwsh
+        run: |
+          "Hello from Windows" | Out-File -FilePath os-info.txt -Encoding utf8
+          Get-Content os-info.txt
+
+  macos-job:
+    name: macOS Job
+    runs-on: macos-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Print OS info
+        run: |
+          echo "Operating System: $RUNNER_OS"
+          uname -a
+      - name: Create and show file
+        run: |
+          echo "Hello from macOS" > os-info.txt
+          cat os-info.txt
