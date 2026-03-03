@@ -23,5 +23,5 @@ Key concepts demonstrated:
 - OS-specific commands and file creation
 
 Challenges
-None encountered in the workflow definitions. If you see YAML syntax errors, validate indentation and the `on` trigger blocks.
-\nTest branch update for PR workflow.
+- None encountered in the workflow definitions. If you see YAML syntax errors, validate indentation and the `on` trigger blocks.
+- Test branch update for PR workflow.
